@@ -1,0 +1,19 @@
+RegisterNetEvent('simple:fix')
+
+local playerPed = GetPlayerPed(-1)
+
+AddEventHandler('simple:fix',function() 
+    if isPedinAnyVehicle(playerPed, false) then
+        local Vehicle = GetVehiclePedIsIn(playerPed, false)
+        SetVehicleEngineHealth(Vehicle, 9999) -- You can change the engine/cosmetic health (ex: 5000 if you want the engine/cosmetic to be half way)
+        SetVehiclePetrolTankHealth(Vehicle, 9999) -- You can change the Petrol here (ex: 5000 if you want the petrol to be half way)
+        SetVehicleFixed(Vehicle)
+        notification('~g~Your vehicle is fixed!') -- You can change the notification text to whatever you want!
+    end 
+end)
+
+function notification(msg)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentString(msg)
+    DrawNotification(false, false)
+end
