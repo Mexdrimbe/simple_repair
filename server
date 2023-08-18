@@ -1,0 +1,7 @@
+AddEventHandler('chatMessage' , function(source, n, msg)
+    local msg = string. lower(msg)
+    if msg == "/repair" then -- you can change the command to whatever you want (ex: if msg == "/fix" )
+        TriggerClientEvent('simple:fix' , source)
+        CancelEvent() 
+    end 
+end)
